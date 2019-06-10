@@ -18,39 +18,63 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var newstableView: UITableView!
     
     let resourceURL = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=aIqfQYhGbaAFb8ZKGXe4AzG7jWTQkzn5"
+    let newsURL = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=daf873f4f4f047639bb2cfe67f90d1c9"
     var headlines = [String]()
     var abstracts = [String]()
     var images = [String]()
+    var sources = [String]()
+    var authors = [String]()
     var urls = [URL]()
     var publisheddates = [String]()
+    var content = [String]()
     var webView: WKWebView!
+    
+    var headline_name = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        webView = WKWebView()
+        // webView = WKWebView()
         getJSON()
-        
-        // Do any additional setup after loading the view.
     }
     
     func getJSON() {
-        Alamofire.request(resourceURL).responseJSON { response in
+        Alamofire.request(newsURL).responseJSON { response in
             if response.result.value != nil {
                 let json = JSON(response.result.value!)
-                let results = json["results"].arrayValue
+                let results = json["articles"].arrayValue
                 
                 for res in results {
                     let headlines =  res["title"].stringValue
-                    let abstracts =  res["abstract"].stringValue
-                    let images =  res["multimedia"][0]["url"].stringValue
+                    let abstracts =  res["description"].stringValue
+                    let images = res["urlToImage"].stringValue
                     let urls =  res["url"].url
-                    let dates = res["published_date"].stringValue
+                    let dates = res["publishedAt"].stringValue
+                    let authors = res["author"].stringValue
+                    let sources = res["source"]["name"].stringValue
+                    let content = res["content"].stringValue
+                    
+                    //print(dates)
+                    let dateFormatterGet = DateFormatter()
+                    dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                    let dateFormatterPrint = DateFormatter()
+                    dateFormatterPrint.dateFormat = "MMM dd, yyyy - h:mm a"
+
+                    
+                    if let date = dateFormatterGet.date(from: dates) {
+                        //print(dateFormatterPrint.string(from: date))
+                        self.publisheddates.append(dateFormatterPrint.string(from: date))
+                    } else {
+                        print("There was an error decoding the string")
+                    }
                     
                     self.headlines.append(headlines)
                     self.abstracts.append(abstracts)
                     self.images.append(images)
                     self.urls.append(urls!)
-                    self.publisheddates.append(dates)
+                    self.sources.append(sources)
+                    self.authors.append(authors)
+                    self.content.append(content)
+                    
                 }
                 
                 DispatchQueue.main.async {
@@ -79,17 +103,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        webView.load(URLRequest(url:self.urls[indexPath.row]))
-        webView.allowsBackForwardNavigationGestures = true
-        view = webView
+        performSegue(withIdentifier: "transfer", sender: self)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.goBack))
     }
-    
-    @objc func goBack() {
-        if webView.canGoBack {
-            webView.goBack()
+   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = newstableView.indexPathForSelectedRow {
+            let selectedRow = indexPath.row
+            if let destination = segue.destination as? DetailsViewController {
+                destination.temp_headline = self.headlines[selectedRow]
+                destination.temp_imageURL = self.images[selectedRow]
+                destination.temp_source = self.sources[selectedRow]
+                destination.temp_url = self.urls[selectedRow]
+                destination.temp_date = self.publisheddates[selectedRow]
+                destination.temp_content = self.content[selectedRow]
+                destination.temp_author = self.authors[selectedRow]
+            }
         }
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -97,5 +129,5 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
 
-}
+} 
 

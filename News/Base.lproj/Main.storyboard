@@ -13,7 +13,7 @@
         <!--Newsfeed-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Newsfeed" id="BYZ-38-t0r" customClass="ViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Newsfeed" title="Newsfeed" id="BYZ-38-t0r" customClass="ViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,7 +43,7 @@
                                                         <constraint firstAttribute="height" constant="55" id="1pT-z7-YAy"/>
                                                         <constraint firstAttribute="width" constant="374" id="OtJ-BY-Zjp"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Bold" family="Bodoni 72 Oldstyle" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -104,11 +104,97 @@
                     <navigationItem key="navigationItem" title="News Reader" id="u0G-1Z-eme"/>
                     <connections>
                         <outlet property="newstableView" destination="iIc-Oe-ghh" id="8sw-6S-26g"/>
+                        <segue destination="6pP-np-jGG" kind="show" identifier="transfer" id="fXu-UW-iLp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="QjQ-9w-VM9">
+            <objects>
+                <viewController storyboardIdentifier="DetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6pP-np-jGG" customClass="DetailsViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FFK-GX-CRU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MJh-Wy-Tcv">
+                                <rect key="frame" x="20" y="168" width="374" height="209"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="209" id="gGW-E5-dVd"/>
+                                    <constraint firstAttribute="width" constant="374" id="vyZ-n6-kC2"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcX-yw-9Ht">
+                                <rect key="frame" x="20" y="118" width="374" height="48"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Bold" family="Bodoni 72 Oldstyle" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhk-Ka-1Rf">
+                                <rect key="frame" x="20" y="392" width="374" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTS-ad-1Dm">
+                                <rect key="frame" x="20" y="420.33333333333331" width="374" height="15.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hj-5O-bZi">
+                                <rect key="frame" x="20" y="444" width="374" height="23"/>
+                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KcB-81-g6r">
+                                <rect key="frame" x="100" y="828" width="214" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Read More"/>
+                                <connections>
+                                    <action selector="clickReadMore:" destination="6pP-np-jGG" eventType="touchUpInside" id="h5c-xc-B7F"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nhk-Ka-1Rf" firstAttribute="leading" secondItem="S90-6X-Dgf" secondAttribute="leading" constant="20" id="0FB-mB-OO7"/>
+                            <constraint firstItem="S90-6X-Dgf" firstAttribute="trailing" secondItem="MJh-Wy-Tcv" secondAttribute="trailing" constant="20" id="8rN-ma-b4K"/>
+                            <constraint firstItem="S90-6X-Dgf" firstAttribute="trailing" secondItem="VcX-yw-9Ht" secondAttribute="trailing" constant="20" id="A6q-1a-VT7"/>
+                            <constraint firstItem="8Hj-5O-bZi" firstAttribute="top" secondItem="GTS-ad-1Dm" secondAttribute="bottom" constant="8" id="Jgo-pl-5tL"/>
+                            <constraint firstItem="S90-6X-Dgf" firstAttribute="trailing" secondItem="8Hj-5O-bZi" secondAttribute="trailing" constant="20" id="Luq-Wp-gWG"/>
+                            <constraint firstItem="VcX-yw-9Ht" firstAttribute="leading" secondItem="S90-6X-Dgf" secondAttribute="leading" constant="20" id="LxE-0D-DyT"/>
+                            <constraint firstItem="S90-6X-Dgf" firstAttribute="trailing" secondItem="GTS-ad-1Dm" secondAttribute="trailing" constant="20" id="NOr-6U-X7a"/>
+                            <constraint firstItem="MJh-Wy-Tcv" firstAttribute="top" secondItem="VcX-yw-9Ht" secondAttribute="bottom" constant="2" id="PC4-Jg-x7f"/>
+                            <constraint firstItem="8Hj-5O-bZi" firstAttribute="leading" secondItem="S90-6X-Dgf" secondAttribute="leading" constant="20" id="UIO-tX-73D"/>
+                            <constraint firstItem="S90-6X-Dgf" firstAttribute="trailing" secondItem="nhk-Ka-1Rf" secondAttribute="trailing" constant="20" id="WB4-pa-THV"/>
+                            <constraint firstItem="KcB-81-g6r" firstAttribute="bottom" secondItem="S90-6X-Dgf" secondAttribute="bottom" id="ek6-be-QX6"/>
+                            <constraint firstItem="MJh-Wy-Tcv" firstAttribute="leading" secondItem="S90-6X-Dgf" secondAttribute="leading" constant="20" id="g3L-er-fBz"/>
+                            <constraint firstItem="KcB-81-g6r" firstAttribute="leading" secondItem="S90-6X-Dgf" secondAttribute="leading" constant="100" id="gGz-cS-glE"/>
+                            <constraint firstItem="GTS-ad-1Dm" firstAttribute="leading" secondItem="S90-6X-Dgf" secondAttribute="leading" constant="20" id="h8Y-7Q-RQv"/>
+                            <constraint firstItem="nhk-Ka-1Rf" firstAttribute="top" secondItem="MJh-Wy-Tcv" secondAttribute="bottom" constant="15" id="s8q-Z2-Y03"/>
+                            <constraint firstItem="nhk-Ka-1Rf" firstAttribute="top" secondItem="MJh-Wy-Tcv" secondAttribute="bottom" constant="15" id="sPM-fv-hJ9"/>
+                            <constraint firstItem="S90-6X-Dgf" firstAttribute="trailing" secondItem="KcB-81-g6r" secondAttribute="trailing" constant="100" id="yqe-Oc-7qq"/>
+                            <constraint firstItem="VcX-yw-9Ht" firstAttribute="top" secondItem="S90-6X-Dgf" secondAttribute="top" constant="30" id="zBZ-dT-pQP"/>
+                            <constraint firstItem="GTS-ad-1Dm" firstAttribute="top" secondItem="nhk-Ka-1Rf" secondAttribute="bottom" constant="8" id="zyv-he-5ng"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="S90-6X-Dgf"/>
+                    </view>
+                    <connections>
+                        <outlet property="articleImage" destination="MJh-Wy-Tcv" id="VIF-mo-6Gi"/>
+                        <outlet property="authorText" destination="nhk-Ka-1Rf" id="By1-Lq-Kvk"/>
+                        <outlet property="content" destination="8Hj-5O-bZi" id="Pgc-4A-w2k"/>
+                        <outlet property="headlineText" destination="VcX-yw-9Ht" id="xtP-qk-xDk"/>
+                        <outlet property="publishedDate" destination="GTS-ad-1Dm" id="wCk-vw-ul8"/>
+                        <outlet property="readMore" destination="KcB-81-g6r" id="J4K-D2-jT9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LOt-od-riR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="927.536231884058" y="137.94642857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="m7c-AU-BUS">
