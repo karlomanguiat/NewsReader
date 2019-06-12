@@ -147,6 +147,7 @@
 			children = (
 				CEC3727722AA2C4F002F101A /* AppDelegate.swift */,
 				CEC3727922AA2C4F002F101A /* ViewController.swift */,
+				CEC372A822AA2FBD002F101A /* ViewControllerTableViewCell.swift */,
 				CE50FCC622ADFB590054F122 /* DetailsViewController.swift */,
 				CEC372AA22AA32B0002F101A /* Image.swift */,
 				CEC3727B22AA2C4F002F101A /* Main.storyboard */,
@@ -154,7 +155,6 @@
 				CEC3728322AA2C50002F101A /* LaunchScreen.storyboard */,
 				CEC3728622AA2C50002F101A /* Info.plist */,
 				CEC3727E22AA2C4F002F101A /* News.xcdatamodeld */,
-				CEC372A822AA2FBD002F101A /* ViewControllerTableViewCell.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";

@@ -48,13 +48,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     let abstracts =  res["description"].stringValue
                     let images = res["urlToImage"].stringValue
                     let urls =  res["url"].url
-                    let dates = res["publishedAt"].stringValue
+                    var dates = res["publishedAt"].stringValue
                     let authors = res["author"].stringValue
                     let sources = res["source"]["name"].stringValue
                     let content = res["content"].stringValue
                     
                     //print(dates)
                     let dateFormatterGet = DateFormatter()
+                    dates = dates.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
+                    // dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                     dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                     let dateFormatterPrint = DateFormatter()
                     dateFormatterPrint.dateFormat = "MMM dd, yyyy - h:mm a"
