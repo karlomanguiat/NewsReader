@@ -11,13 +11,12 @@ import Foundation
 import Alamofire
 import AlamofireImage
 import SwiftyJSON
-import WebKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var newstableView: UITableView!
     
-    let resourceURL = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=aIqfQYhGbaAFb8ZKGXe4AzG7jWTQkzn5"
+ //   let resourceURL = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=aIqfQYhGbaAFb8ZKGXe4AzG7jWTQkzn5"
     let newsURL = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=daf873f4f4f047639bb2cfe67f90d1c9"
     var headlines = [String]()
     var abstracts = [String]()
@@ -27,13 +26,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var urls = [URL]()
     var publisheddates = [String]()
     var content = [String]()
-    var webView: WKWebView!
     
     var headline_name = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // webView = WKWebView()
         getJSON()
     }
     
