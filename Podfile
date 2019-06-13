@@ -10,6 +10,7 @@ target 'News' do
 pod 'SwiftyJSON'
 pod 'Alamofire'
 pod 'AlamofireImage'
+pod 'DropDown'
 
   target 'NewsTests' do
     inherit! :search_paths
