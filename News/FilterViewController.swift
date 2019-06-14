@@ -88,7 +88,7 @@ class FilterViewController: UIViewController, UITextFieldDelegate {
     var keyword = ""
     var selectedCountry = ""
     var selectedCategory = ""
-    var newsURL = ""
+    var newsURL : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +97,7 @@ class FilterViewController: UIViewController, UITextFieldDelegate {
         initDropdowns()
         initFilter()
         
-        print(newsURL)
+        print(newsURL!)
         
         
         CountryDropDown.selectionAction = { (index: Int, item: String) in
@@ -141,7 +141,14 @@ class FilterViewController: UIViewController, UITextFieldDelegate {
     @IBAction func openCategoryDrop(_ sender: Any) {
         CategoryDropDown.show()
     }
-        
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "cancelFilter" {
+            print("cancelFilter")
+            newsURL = "Chris Yabut"
+            //newsURL = getnewURL()
+        }
+    }
     func getnewURL() -> String {
         var newURL = ""
         var country = ""

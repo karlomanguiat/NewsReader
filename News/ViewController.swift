@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var publisheddates = [String]()
     var content = [String]()
     
-    var headline_name = ""
+    var headline_name : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,6 +132,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
+    @IBAction func unwindToView(_ unwindSegue: UIStoryboardSegue) {
+        if let tempFilterViewController = unwindSegue.source as? FilterViewController {
+            print("unwind")
+            let headline_name = tempFilterViewController.newsURL
+            print(headline_name!)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
