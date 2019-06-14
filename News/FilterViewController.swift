@@ -145,8 +145,8 @@ class FilterViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "cancelFilter" {
             print("cancelFilter")
-            newsURL = "Chris Yabut"
-            //newsURL = getnewURL()
+            //newsURL = "Chris Yabut"
+            newsURL = getnewURL()
         }
     }
     func getnewURL() -> String {

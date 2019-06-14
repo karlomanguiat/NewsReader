@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var newstableView: UITableView!
     
     let resourceURL = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=aIqfQYhGbaAFb8ZKGXe4AzG7jWTQkzn5"
-    let newsURL = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=890167f041854a3ba357170d891f36ab"
+    var newsURL = "https://newsapi.org/v2/top-headlines?country=us&apiKey=890167f041854a3ba357170d891f36ab"
     var headlines = [String]()
     var abstracts = [String]()
     var images = [String]()
@@ -27,11 +27,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var publisheddates = [String]()
     var content = [String]()
     
-    var headline_name : String = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         getJSON()
+        print("This is the news URL: \(newsURL)")
     }
     
     func getJSON() {
@@ -65,6 +64,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     } else {
                         print("There was an error decoding the string")
                     }
+                    
+                    print(headlines)
                     
                     self.headlines.append(headlines)
                     self.abstracts.append(abstracts)
@@ -131,13 +132,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
     }
+    
+    func emptyArrays() {
+        self.headlines.removeAll()
+        self.abstracts.removeAll()
+        self.images.removeAll()
+        self.urls.removeAll()
+        self.sources.removeAll()
+        self.authors.removeAll()
+        self.content.removeAll()
+    }
 
     @IBAction func unwindToView(_ unwindSegue: UIStoryboardSegue) {
         if let tempFilterViewController = unwindSegue.source as? FilterViewController {
             print("unwind")
             let headline_name = tempFilterViewController.newsURL
-            print(headline_name!)
+            self.newsURL = headline_name!
         }
+        print("This is the news URL from segue: \(newsURL)")
+        emptyArrays()
+        getJSON()
     }
     
     override func didReceiveMemoryWarning() {
