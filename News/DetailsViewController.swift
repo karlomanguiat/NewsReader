@@ -30,7 +30,14 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         headlineText.text = temp_headline
         publishedDate.text = temp_date
-        authorText.text = "By: \(temp_author) from \(temp_source)"
+        
+        print(temp_author.count)
+        if temp_author.count != 0 {
+            authorText.text = "By: \(temp_author) from \(temp_source)"
+        } else {
+            authorText.text = "Source: \(temp_source)"
+        }
+        
         content.text = temp_content
         articleImage.loadImageUsingCacheWithUrlString(temp_imageURL)
     }
