@@ -154,29 +154,31 @@ class FilterViewController: UIViewController, UITextFieldDelegate {
         var country = ""
         var category = ""
         
+        let tempkeyword = self.keyword.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+        
         if selectedCategory == "" && selectedCountry == "" {
-            //print(self.keyword)
-            newURL = "https://newsapi.org/v2/top-headlines?q=\(self.keyword)&apiKey=890167f041854a3ba357170d891f36ab"
-        } else if self.keyword == "" && selectedCategory == "" {
+            //print(tempkeyword)
+            newURL = "https://newsapi.org/v2/top-headlines?q=\(tempkeyword)&apiKey=890167f041854a3ba357170d891f36ab"
+        } else if tempkeyword == "" && selectedCategory == "" {
             country = CountryDictionary[self.selectedCountry]!
             newURL = "https://newsapi.org/v2/top-headlines?country=\(country)&apiKey=890167f041854a3ba357170d891f36ab"
-        } else if self.keyword == "" && selectedCategory == "" {
+        } else if tempkeyword == "" && selectedCategory == "" {
             category = CategoryDictionary[self.selectedCategory]!
             newURL = "https://newsapi.org/v2/top-headlines?category=\(category)&apiKey=890167f041854a3ba357170d891f36ab"
         } else if selectedCategory == "" {
             country = CountryDictionary[self.selectedCountry]!
-            newURL = "https://newsapi.org/v2/top-headlines?q=\(self.keyword)&country=\(country)&apiKey=890167f041854a3ba357170d891f36ab"
+            newURL = "https://newsapi.org/v2/top-headlines?q=\(tempkeyword)&country=\(country)&apiKey=890167f041854a3ba357170d891f36ab"
         } else if selectedCountry == "" {
             category = CategoryDictionary[self.selectedCategory]!
-            newURL = "https://newsapi.org/v2/top-headlines?q=\(self.keyword)&category=\(category)&apiKey=890167f041854a3ba357170d891f36ab"
-        } else if self.keyword == "" {
+            newURL = "https://newsapi.org/v2/top-headlines?q=\(tempkeyword)&category=\(category)&apiKey=890167f041854a3ba357170d891f36ab"
+        } else if tempkeyword == "" {
             country = CountryDictionary[self.selectedCountry]!
             category = CategoryDictionary[self.selectedCategory]!
             newURL = "https://newsapi.org/v2/top-headlines?country=\(country)&category=\(category)&apiKey=890167f041854a3ba357170d891f36ab"
         } else {
             country = CountryDictionary[self.selectedCountry]!
             category = CategoryDictionary[self.selectedCategory]!
-            newURL = "https://newsapi.org/v2/top-headlines?q=\(self.keyword)&country=\(country)&category=\(category)&apiKey=890167f041854a3ba357170d891f36ab"
+            newURL = "https://newsapi.org/v2/top-headlines?q=\(tempkeyword)&country=\(country)&category=\(category)&apiKey=890167f041854a3ba357170d891f36ab"
         }
        
         return newURL
