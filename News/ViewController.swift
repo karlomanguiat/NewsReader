@@ -13,10 +13,8 @@ import AlamofireImage
 import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
     @IBOutlet weak var newstableView: UITableView!
     
-    let resourceURL = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=aIqfQYhGbaAFb8ZKGXe4AzG7jWTQkzn5"
     var newsURL = "https://newsapi.org/v2/top-headlines?country=us&apiKey=890167f041854a3ba357170d891f36ab"
     var headlines = [String]()
     var abstracts = [String]()
@@ -30,7 +28,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         getJSON()
-        print("This is the news URL: \(newsURL)")
     }
     
     func getJSON() {
@@ -48,24 +45,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     let authors = res["author"].stringValue
                     let sources = res["source"]["name"].stringValue
                     let content = res["content"].stringValue
-                    
-                    //print(dates)
+
                     let dateFormatterGet = DateFormatter()
                     dates = dates.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
-                    // dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                     dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                     let dateFormatterPrint = DateFormatter()
                     dateFormatterPrint.dateFormat = "MMM dd, yyyy - h:mm a"
 
                     
                     if let date = dateFormatterGet.date(from: dates) {
-                        //print(dateFormatterPrint.string(from: date))
                         self.publisheddates.append(dateFormatterPrint.string(from: date))
                     } else {
                         print("There was an error decoding the string")
                     }
                     
-                    print(headlines)
+//                    print(headlines)
                     
                     self.headlines.append(headlines)
                     self.abstracts.append(abstracts)
@@ -134,7 +128,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         } else if segue.identifier == "toFilter" {
             print("toFilter")
             if let destination = segue.destination as? FilterViewController {
-                destination.newsURL = self.resourceURL
+                destination.newsURL = self.newsURL
             }
         }
     }
@@ -172,19 +166,25 @@ extension UITableView {
         let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
         let titleLabel = UILabel()
         let messageLabel = UILabel()
+        
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         titleLabel.textColor = UIColor.black
-        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         messageLabel.textColor = UIColor.lightGray
+        
+        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         messageLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
+        
         emptyView.addSubview(titleLabel)
         emptyView.addSubview(messageLabel)
+        
         titleLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
         messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
         messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 20).isActive = true
         messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -20).isActive = true
+        
         titleLabel.text = title
         messageLabel.text = message
         messageLabel.numberOfLines = 0
