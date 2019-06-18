@@ -14,6 +14,9 @@ import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var newstableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    private let refreshControl = UIRefreshControl()
     
     var newsURL = "https://newsapi.org/v2/top-headlines?country=us&apiKey=890167f041854a3ba357170d891f36ab"
     var headlines = [String]()
@@ -28,6 +31,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         getJSON()
+        refreshView()
     }
     
     func getJSON() {
@@ -73,6 +77,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
                 DispatchQueue.main.async {
                     self.newstableView.reloadData()
+                    self.refreshControl.endRefreshing()
+                    self.activityIndicator.stopAnimating()
                 }
             }
         }
@@ -83,6 +89,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        
         if headlines.count == 0 {
             tableView.setEmptyView(title: "No results found.", message: "Try filtering results again.")
         }
@@ -95,7 +107,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "articleCell", for: indexPath) as! ViewControllerTableViewCell
         
-        cell.headerText.text = self.headlines[indexPath.row]
+        //cell.headerText.text = self.headlines[indexPath.row]
+        let attributedString = NSAttributedString(string: self.headlines[indexPath.row])
+        cell.headerText.attributedText = attributedString
         cell.detailsText.text = self.abstracts[indexPath.row]
         cell.dateLabel.text = self.publisheddates[indexPath.row]
         cell.articleImage.loadImageUsingCacheWithUrlString(self.images[indexPath.row])
@@ -156,7 +170,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    func refreshView() {
+        refreshControl.addTarget(self, action: #selector(refreshNews(_:)), for: .valueChanged)
+    }
+    
+    @objc private func refreshNews(_ sender: Any) {
+        emptyArrays()
+        getJSON()
     }
 
 } 

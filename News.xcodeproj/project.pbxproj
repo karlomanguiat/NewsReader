@@ -50,11 +50,11 @@
 		8D1E62E042228688D27C4B17 /* Pods_News.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_News.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A360377D3DA55E80BFF2362E /* Pods_NewsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F9ED5C8D52D84391DAF962 /* Pods-NewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsTests.release.xcconfig"; path = "Target Support Files/Pods-NewsTests/Pods-NewsTests.release.xcconfig"; sourceTree = "<group>"; };
-		CE37A81422B12DC500AE271C /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
-		CE50FCC622ADFB590054F122 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		CE37A81422B12DC500AE271C /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FilterViewController.swift; path = ../FilterViewController.swift; sourceTree = "<group>"; };
+		CE50FCC622ADFB590054F122 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailsViewController.swift; path = ../DetailsViewController.swift; sourceTree = "<group>"; };
 		CEC3727422AA2C4F002F101A /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEC3727722AA2C4F002F101A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CEC3727922AA2C4F002F101A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CEC3727722AA2C4F002F101A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
+		CEC3727922AA2C4F002F101A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
 		CEC3727C22AA2C4F002F101A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEC3727F22AA2C4F002F101A /* News.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = News.xcdatamodel; sourceTree = "<group>"; };
 		CEC3728122AA2C50002F101A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -122,6 +122,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE3AFE3422B744D4000C2E85 /* Table Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CEC372A822AA2FBD002F101A /* ViewControllerTableViewCell.swift */,
+			);
+			path = "Table Cell";
+			sourceTree = "<group>";
+		};
+		CE3AFE3522B744DE000C2E85 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CEC372AA22AA32B0002F101A /* Image.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		CE3AFE3622B744F0000C2E85 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CEC3727B22AA2C4F002F101A /* Main.storyboard */,
+				CEC3728322AA2C50002F101A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		CE8FCEF022B7445300E52E48 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				CEC3727722AA2C4F002F101A /* AppDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		CE8FCEF122B7446C00E52E48 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEC3727922AA2C4F002F101A /* ViewController.swift */,
+				CE50FCC622ADFB590054F122 /* DetailsViewController.swift */,
+				CE37A81422B12DC500AE271C /* FilterViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		CEC3726B22AA2C4F002F101A = {
 			isa = PBXGroup;
 			children = (
@@ -147,15 +190,12 @@
 		CEC3727622AA2C4F002F101A /* News */ = {
 			isa = PBXGroup;
 			children = (
-				CEC3727722AA2C4F002F101A /* AppDelegate.swift */,
-				CEC3727922AA2C4F002F101A /* ViewController.swift */,
-				CEC372A822AA2FBD002F101A /* ViewControllerTableViewCell.swift */,
-				CE50FCC622ADFB590054F122 /* DetailsViewController.swift */,
-				CE37A81422B12DC500AE271C /* FilterViewController.swift */,
-				CEC372AA22AA32B0002F101A /* Image.swift */,
-				CEC3727B22AA2C4F002F101A /* Main.storyboard */,
+				CE8FCEF022B7445300E52E48 /* Delegates */,
+				CE8FCEF122B7446C00E52E48 /* Controllers */,
+				CE3AFE3422B744D4000C2E85 /* Table Cell */,
+				CE3AFE3522B744DE000C2E85 /* Managers */,
+				CE3AFE3622B744F0000C2E85 /* Storyboards */,
 				CEC3728122AA2C50002F101A /* Assets.xcassets */,
-				CEC3728322AA2C50002F101A /* LaunchScreen.storyboard */,
 				CEC3728622AA2C50002F101A /* Info.plist */,
 				CEC3727E22AA2C4F002F101A /* News.xcdatamodeld */,
 			);

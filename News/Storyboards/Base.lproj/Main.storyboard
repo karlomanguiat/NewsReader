@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cwZ-SQ-qe5">
-    <device id="retina6_5" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -279,6 +279,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TsZ-pU-e7Z">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iIc-Oe-ghh">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -288,18 +291,18 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="377"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4hg-By-zYp" id="8F4-iP-FFb">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="376.66666666666669"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="376.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jtk-f0-zl0">
-                                                    <rect key="frame" x="20" y="30.666666666666657" width="374" height="232.99999999999997"/>
+                                                    <rect key="frame" x="20" y="30.5" width="374" height="233"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="233" id="2bL-j5-El6"/>
                                                         <constraint firstAttribute="width" constant="374" id="jkG-0I-MFN"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PR7-a4-LCJ">
-                                                    <rect key="frame" x="20" y="266.66666666666669" width="374" height="55"/>
+                                                    <rect key="frame" x="20" y="266.5" width="374" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="55" id="1pT-z7-YAy"/>
                                                         <constraint firstAttribute="width" constant="374" id="OtJ-BY-Zjp"/>
@@ -309,7 +312,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgQ-4O-9MA">
-                                                    <rect key="frame" x="367.66666666666669" y="12.666666666666664" width="26.333333333333314" height="14"/>
+                                                    <rect key="frame" x="367.5" y="12.5" width="26.5" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="14" id="aRN-0E-pAT"/>
                                                     </constraints>
@@ -318,7 +321,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvK-90-FOc">
-                                                    <rect key="frame" x="20" y="316.66666666666669" width="374" height="44"/>
+                                                    <rect key="frame" x="20" y="316.5" width="374" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="MCz-7i-t0Y"/>
                                                         <constraint firstAttribute="width" constant="374" id="Wcj-bl-vfS"/>
@@ -360,6 +363,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TsZ-pU-e7Z" secondAttribute="trailing" id="WiO-K5-Arf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TsZ-pU-e7Z" secondAttribute="bottom" id="ZVv-R8-Y6F"/>
+                            <constraint firstItem="TsZ-pU-e7Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dim-CI-2if"/>
+                            <constraint firstItem="TsZ-pU-e7Z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qAq-TY-dDU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="News Reader" id="u0G-1Z-eme">
@@ -371,6 +380,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="TsZ-pU-e7Z" id="SDg-o4-Bal"/>
                         <outlet property="newstableView" destination="iIc-Oe-ghh" id="8sw-6S-26g"/>
                         <segue destination="6pP-np-jGG" kind="show" identifier="transfer" id="fXu-UW-iLp"/>
                     </connections>
